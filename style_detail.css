@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+header {
+  background-color: #f8c12d;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+header p {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 1.3em;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.main-photo img {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+}
+
+.side-photos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 5px;
+}
+
+.side-photo {
+  margin-bottom: 5px;
+}
+
+.side-photo img {
+  width: 100%;
+  height: auto;
+  max-width: 255px;
+}
+
+.side-photo:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background-color: #f2f2f2;
+  width: 50%;
+}
+
+td {
+  width: 50%;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+input[type="button"] {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #cfa120;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+.margin-left-px {
+  margin-left: 160px;
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+.card-img-top {
+  width: 100%; /* Lebar penuh dari elemen parent */
+  height: 200px; /* Tinggi tetap */
+  object-fit: cover; /* Memastikan gambar tidak terdistorsi dan memenuhi area */
+  object-position: center; /* Memusatkan gambar */
+}

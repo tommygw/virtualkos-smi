@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+header {
+  background-color: #f8c12d;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+header p {
+  font-size: 1.2em;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form input {
+  padding: 10px;
+  font-size: 1em;
+  width: 300px;
+}
+
+form button {
+  padding: 10px;
+  font-size: 1em;
+  background-color: #ff6f00;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.kost-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.kost-item {
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.kost-item img {
+  width: 100%;
+  height: auto;
+}
+
+.kost-item a {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ff6f00;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.kost-detail {
+  text-align: center;
+  padding: 20px;
+}
+
+.kost-detail img {
+  width: 100%;
+  height: auto;
+}
+
+.kost-detail h3 {
+  margin: 10px 0;
+}
+
+.kost-detail p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.kost-detail a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff6f00;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.jumbotron {
+  padding: 2rem 2rem;
+  background-color: #fdfafa;
+}
+#listkosan {
+  margin-top: 20;
+}

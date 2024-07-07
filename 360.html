@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--projecttitle--><title>test</title><!--projecttitle-end-->
+		<!--projectdescription--><meta name="description" content="Baruuuuurururuurru"><!--projectdescription-end-->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+		
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		
+		<script src="imagedata.js"></script>
+		<script src="jquery.js"></script>
+		<script src="three.min.js"></script>
+		<script src="panolens.min.js"></script>
+		
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+		
+		<style>
+		
+			
+						
+			/* SCROLLBAR STYLING */
+			/* width */
+			::-webkit-scrollbar {
+				width: 0.25em;
+				height: 0.25em;
+			}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: #2c3643; 
+			}
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #0d9e59; 
+				transition: background .5s;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #00e075; 
+			}
+
+
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #000;
+				color: black;
+			}
+
+			a:link, a:visited{
+				color: #bdc3c7;	
+			}
+
+			.fullwrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: black;
+			}
+			
+			#container {
+                width: 100%;
+                height: 100%;
+            }
+			
+			#tmp{
+				position: fixed;
+				top: 0;
+				left: 0; 
+				right: 0;
+				bottom: 0;
+				padding: 3em;
+				background-color: rgba(0,0,0,.5);
+				backdrop-filter: blur(5px);
+				display: none;
+			}
+		</style>
+	</head>
+	<body id="body">
+	    <div id="container" style="color: black;"></div>
+    	
+		
+		
+		<!--customhtml--><div class='customhotspot' id='ruang_tengah'></div><div class='customhotspot' id='parkiran_dalem'></div><div class='customhotspot' id='kamarrizki'></div><div class='customhotspot' id='ruang_tengah2'></div><div class='customhotspot' id='hal_depan'></div><div class='customhotspot' id='jemuran'></div><div class='customhotspot' id='hal_depan2'></div><div class='customhotspot' id='wc3'></div><div class='customhotspot' id='kamar_mahal1'></div><!--customhtml-end-->
+		
+		<div id="tmp">
+			<div style="width: 100%; height: 100%; overflow: hidden; overflow-y: auto; box-sizing: border-box; position: relative;" id="tmpcontent"></div>
+			<div class="mediaclosebutton" onclick="hideTemp()"><i class="fa fa-times-circle"></i></div>
+		</div>
+
+
+		<div id="loading" class="fullwrapper" style="display: table; width: 100%; height: 100%;">
+    		<div style="display: table-cell; vertical-align: middle; text-align: center; color: white; font-size: 30px; padding: 50px;">
+    			<!--loadingtext-->Loading...<!--loadingtext-end-->
+				<div id="loadingperc" style="font-size:12px;"></div>
+    		</div>
+    	</div>
+		
+    	<script>
+			
+            var container = document.querySelector( '#container' );
+			/*panolens*/
+
+var viewer = new PANOLENS.Viewer( { container: container , controlBar: false,  output: 'console' , autoHideInfospot: false, } );
+
+/*panolens-end*/
+			
+			viewer.addUpdateCallback(function(){});
+			
+			/*panoramas*/
+
+var ruang_tengah = new PANOLENS.ImagePanorama( "panoramas/ruang_tengah.jpg" );
+			ruang_tengah.addEventListener('progress', onProgress);
+			ruang_tengah.addEventListener('load', function(e){
+				endLoading();
+			});
+			ruang_tengah.addEventListener('enter', function(e){
+				endLoading();
+			});
+			ruang_tengah.addEventListener('click', function(e){
+			});
+
+
+var infospotruang_tengah0 = new PANOLENS.Infospot( 512, hotspotIcons[8].data, true );
+					infospotruang_tengah0.position.set( -2932.13, -674.57, -3987.85 );
+					ruang_tengah.add(infospotruang_tengah0);
+
+infospotruang_tengah0.addEventListener('click', function(){
+
+ChangePanorama('ruang_tengah2');
+
+});
+
+var infospotruang_tengah1 = new PANOLENS.Infospot( 512, hotspotIcons[10].data, true );
+					infospotruang_tengah1.position.set( 4178.91, -744.86, -2628.08 );
+					ruang_tengah.add(infospotruang_tengah1);
+
+infospotruang_tengah1.addEventListener('click', function(){
+
+ChangePanorama('kamarrizki');
+
+});
+
+var infospotruang_tengah2 = new PANOLENS.Infospot( 512, hotspotIcons[10].data, true );
+					infospotruang_tengah2.position.set( -640.17, -546.74, 4919.93 );
+					ruang_tengah.add(infospotruang_tengah2);
+
+infospotruang_tengah2.addEventListener('click', function(){
+
+ChangePanorama('jemuran');
+
+});
+
+var infospotruang_tengah3 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotruang_tengah3.position.set( -2024.54, -643.50, 4521.79 );
+					ruang_tengah.add(infospotruang_tengah3);
+
+infospotruang_tengah3.addEventListener('click', function(){
+
+ChangePanorama('parkiran_dalem');
+
+});
+
+viewer.add( ruang_tengah );
+
+var parkiran_dalem = new PANOLENS.ImagePanorama( "panoramas/parkiran_dalem.jpg" );
+			parkiran_dalem.addEventListener('progress', onProgress);
+			parkiran_dalem.addEventListener('load', function(e){
+				endLoading();
+			});
+			parkiran_dalem.addEventListener('enter', function(e){
+				endLoading();
+			});
+			parkiran_dalem.addEventListener('click', function(e){
+			});
+
+
+var infospotparkiran_dalem0 = new PANOLENS.Infospot( 512, hotspotIcons[10].data, true );
+					infospotparkiran_dalem0.position.set( -4541.10, -2060.49, 200.24 );
+					parkiran_dalem.add(infospotparkiran_dalem0);
+
+infospotparkiran_dalem0.addEventListener('click', function(){
+
+ChangePanorama('ruang_tengah');
+
+});
+
+var infospotparkiran_dalem1 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotparkiran_dalem1.position.set( 4962.18, -272.69, 517.22 );
+					parkiran_dalem.add(infospotparkiran_dalem1);
+
+infospotparkiran_dalem1.addEventListener('click', function(){
+
+ChangePanorama('hal_depan');
+
+});
+
+viewer.add( parkiran_dalem );
+
+var kamarrizki = new PANOLENS.ImagePanorama( "panoramas/kamarrizki.jpg" );
+			kamarrizki.addEventListener('progress', onProgress);
+			kamarrizki.addEventListener('load', function(e){
+				endLoading();
+			});
+			kamarrizki.addEventListener('enter', function(e){
+				endLoading();
+			});
+			kamarrizki.addEventListener('click', function(e){
+			});
+
+
+var infospotkamarrizki0 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotkamarrizki0.position.set( -4920.25, -481.89, 687.11 );
+					kamarrizki.add(infospotkamarrizki0);
+
+infospotkamarrizki0.addEventListener('click', function(){
+
+ChangePanorama('ruang_tengah');
+
+});
+
+viewer.add( kamarrizki );
+
+var ruang_tengah2 = new PANOLENS.ImagePanorama( "panoramas/ruang_tengah2.jpg" );
+			ruang_tengah2.addEventListener('progress', onProgress);
+			ruang_tengah2.addEventListener('load', function(e){
+				endLoading();
+			});
+			ruang_tengah2.addEventListener('enter', function(e){
+				endLoading();
+			});
+			ruang_tengah2.addEventListener('click', function(e){
+			});
+
+
+var infospotruang_tengah20 = new PANOLENS.Infospot( 512, hotspotIcons[10].data, true );
+					infospotruang_tengah20.position.set( -1057.03, -966.79, -4784.45 );
+					ruang_tengah2.add(infospotruang_tengah20);
+
+infospotruang_tengah20.addEventListener('click', function(){
+
+ChangePanorama('kamar_mahal1');
+
+});
+
+var infospotruang_tengah21 = new PANOLENS.Infospot( 512, hotspotIcons[8].data, true );
+					infospotruang_tengah21.position.set( 2676.26, -461.74, 4187.52 );
+					ruang_tengah2.add(infospotruang_tengah21);
+
+infospotruang_tengah21.addEventListener('click', function(){
+
+ChangePanorama('wc3');
+
+});
+
+var infospotruang_tengah22 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotruang_tengah22.position.set( -461.66, -604.57, 4935.27 );
+					ruang_tengah2.add(infospotruang_tengah22);
+
+infospotruang_tengah22.addEventListener('click', function(){
+
+ChangePanorama('ruang_tengah');
+
+});
+
+viewer.add( ruang_tengah2 );
+
+var hal_depan = new PANOLENS.ImagePanorama( "panoramas/hal_depan.jpg" );
+			hal_depan.addEventListener('progress', onProgress);
+			hal_depan.addEventListener('load', function(e){
+				endLoading();
+			});
+			hal_depan.addEventListener('enter', function(e){
+				endLoading();
+			});
+			hal_depan.addEventListener('click', function(e){
+			});
+
+
+var infospothal_depan0 = new PANOLENS.Infospot( 512, hotspotIcons[8].data, true );
+					infospothal_depan0.position.set( -2469.18, -1264.43, -4153.00 );
+					hal_depan.add(infospothal_depan0);
+
+infospothal_depan0.addEventListener('click', function(){
+
+ChangePanorama('hal_depan2');
+
+});
+
+var infospothal_depan1 = new PANOLENS.Infospot( 512, hotspotIcons[10].data, true );
+					infospothal_depan1.position.set( -627.07, -1005.93, -4848.83 );
+					hal_depan.add(infospothal_depan1);
+
+infospothal_depan1.addEventListener('click', function(){
+
+ChangePanorama('parkiran_dalem');
+
+});
+
+viewer.add( hal_depan );
+
+var jemuran = new PANOLENS.ImagePanorama( "panoramas/jemuran.jpg" );
+			jemuran.addEventListener('progress', onProgress);
+			jemuran.addEventListener('load', function(e){
+				endLoading();
+			});
+			jemuran.addEventListener('enter', function(e){
+				endLoading();
+			});
+			jemuran.addEventListener('click', function(e){
+			});
+
+
+var infospotjemuran0 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotjemuran0.position.set( 411.09, 75.96, -4975.47 );
+					jemuran.add(infospotjemuran0);
+
+infospotjemuran0.addEventListener('click', function(){
+
+ChangePanorama('ruang_tengah');
+
+});
+
+viewer.add( jemuran );
+
+var hal_depan2 = new PANOLENS.ImagePanorama( "panoramas/hal_depan2.jpg" );
+			hal_depan2.addEventListener('progress', onProgress);
+			hal_depan2.addEventListener('load', function(e){
+				endLoading();
+			});
+			hal_depan2.addEventListener('enter', function(e){
+				endLoading();
+			});
+			hal_depan2.addEventListener('click', function(e){
+			});
+
+
+var infospothal_depan20 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospothal_depan20.position.set( -1984.97, -101.37, 4582.17 );
+					hal_depan2.add(infospothal_depan20);
+
+infospothal_depan20.addEventListener('click', function(){
+
+ChangePanorama('hal_depan');
+
+});
+
+var infospothal_depan21 = new PANOLENS.Infospot( 512, hotspotIcons[8].data, true );
+					infospothal_depan21.position.set( 1209.53, -57.97, 4842.84 );
+					hal_depan2.add(infospothal_depan21);
+
+infospothal_depan21.addEventListener('click', function(){
+
+ChangePanorama('parkiran_dalem');
+
+});
+
+viewer.add( hal_depan2 );
+
+var wc3 = new PANOLENS.ImagePanorama( "panoramas/wc3.jpg" );
+			wc3.addEventListener('progress', onProgress);
+			wc3.addEventListener('load', function(e){
+				endLoading();
+			});
+			wc3.addEventListener('enter', function(e){
+				endLoading();
+			});
+			wc3.addEventListener('click', function(e){
+			});
+
+
+var infospotwc30 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotwc30.position.set( 3978.80, -255.06, 3004.88 );
+					wc3.add(infospotwc30);
+
+infospotwc30.addEventListener('click', function(){
+
+ChangePanorama('ruang_tengah2');
+
+});
+
+viewer.add( wc3 );
+
+var kamar_mahal1 = new PANOLENS.ImagePanorama( "panoramas/kamar_mahal1.jpg" );
+			kamar_mahal1.addEventListener('progress', onProgress);
+			kamar_mahal1.addEventListener('load', function(e){
+				endLoading();
+			});
+			kamar_mahal1.addEventListener('enter', function(e){
+				endLoading();
+			});
+			kamar_mahal1.addEventListener('click', function(e){
+			});
+
+
+var infospotkamar_mahal10 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotkamar_mahal10.position.set( 3647.23, -562.84, 3363.88 );
+					kamar_mahal1.add(infospotkamar_mahal10);
+
+infospotkamar_mahal10.addEventListener('click', function(){
+
+ChangePanorama('ruang_tengah2');
+
+});
+
+viewer.add( kamar_mahal1 );
+
+$(document).ready(function(){ ChangePanorama('hal_depan'); });
+
+
+/*panoramas-end*/
+            
+			var stilloading = true;
+			function onProgress ( event ) {
+				
+				progress = event.progress.loaded / event.progress.total * 100;
+				console.log("Loading panorama: " + progress + " ... ");
+				$("#loadingperc").html(Math.ceil(progress) + "%");
+				if(Math.ceil(progress) >= 100){
+					endLoading();
+					stilloading = false;
+
+				}else{
+				    clearTimeout(elTimer);
+					stilloading = true;
+					$("#loading").show();
+				}
+			}
+			
+			var elTimer;
+			function endLoading(){
+			    clearTimeout(elTimer);
+				if(stilloading == false){
+					elTimer = setTimeout(function(){
+						$("#loading").fadeOut();
+					}, 750);
+					
+				}
+			}
+			
+			function hideTemp(){
+				$("#tmp").fadeOut();
+				setTimeout(function(){
+					$("#tmpcontent").html("");
+				},1000);
+			}
+			
+			function showMedia(type, content){
+				switch(type){
+					case 1 :
+						//Image
+						$("#tmpcontent").html("<img src='"+content+"' style='width: 100%;'>");
+						$("#tmp").fadeIn();
+						break;
+					case 2 :
+						//Video
+						$("#tmpcontent").html("<video id='webvideo' controls autoplay style='width: 100%; height: 100%;'><source src='" +content+ "' type='video/mp4'> Your browser does not support the video tag. </video>");
+						$("#tmp").fadeIn();
+						break;
+					case 3 :
+						//Audio
+						$("#tmpcontent").html("<audio controls style='width: 100%;'><source src='"+content+"' type='audio/ogg'>Your browser does not support the audio tag.</audio>");
+						$("#tmp").fadeIn();
+						break;
+					case 4 :
+						//PDF
+						$("#tmpcontent").html("<iframe src='pdfjs/web/viewer.html?file=../../"+content+"' style='width: 100%; height: 99%;'></iframe>");
+						$("#tmp").fadeIn();
+						break;
+				}
+			}
+			
+			
+			
+			//Update Callback
+			viewer.addUpdateCallback(function(){
+				
+				/*viewerupdatecallback*/
+if(viewer.panorama == ruang_tengah){
+}
+
+if(viewer.panorama == parkiran_dalem){
+}
+
+if(viewer.panorama == kamarrizki){
+}
+
+if(viewer.panorama == ruang_tengah2){
+}
+
+if(viewer.panorama == hal_depan){
+}
+
+if(viewer.panorama == jemuran){
+}
+
+if(viewer.panorama == hal_depan2){
+}
+
+if(viewer.panorama == wc3){
+}
+
+if(viewer.panorama == kamar_mahal1){
+}
+/*viewerupdatecallback-end*/
+				
+				
+			});
+			
+			
+			
+			var hotspotsvisible = true;
+			function ShowMyInfospot(hs, elid){
+				var thehs = toScreenPosition(hs);
+				if(thehs.z < 1){
+					$("#" + elid).css({
+						"top" : (thehs.y - ($("#" + elid).height()/2)) + "px",
+						"left" : (thehs.x - ($("#" + elid).width()/2)) + "px",
+					});
+					if(hotspotsvisible)
+						$("#" + elid).show();
+				}else{
+					$("#" + elid).hide();
+				}
+				
+			}
+			
+			function toScreenPosition(obj)
+			{
+				var vector = new THREE.Vector3();
+				var widthHalf = 0.5 * innerWidth;
+				var heightHalf = 0.5 * innerHeight;
+				
+				//obj.updateMatrixWorld();				
+				vector.setFromMatrixPosition(obj.matrixWorld);
+				
+				
+				vector.project(viewer.camera);
+
+				vector.x = ( vector.x * widthHalf ) + widthHalf;
+				vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+				
+				return { 
+					x: vector.x,
+					y: vector.y,
+					z: vector.z,
+				};
+
+			};
+			
+			var currentPanorama;
+			function ChangePanorama(panorama){
+				currentPanorama = panorama;
+				HideInfospots(); 
+				$("#loading").fadeIn();
+				//$(".customhotspot").fadeOut();
+				setTimeout(function(){
+					viewer.setPanorama(window[panorama]);
+				}, 100);
+				setTimeout(function(){
+					$("#" + panorama).fadeIn();
+				}, 1000);
+				
+			}
+			
+			
+			
+			
+			
+			function HideInfospots(){
+				$(".customhotspot").fadeOut();
+			}
+
+			/*customjs*//*customjs-end*/
+        </script>
+	</body>
+</html>
